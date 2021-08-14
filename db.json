@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "text": "learn react",
+      "day": "15th aug",
+      "reminder": true,
+      "id": 2
+    },
+    {
+      "text": "Celebrate independence day",
+      "day": "15th aug",
+      "reminder": true,
+      "id": 3
+    },
+    {
+      "text": "sgrg",
+      "day": "ggrg",
+      "reminder": false,
+      "id": 4
+    }
+  ]
+}

@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import Header from "./components/Header.js"
 import Footer from "./components/Footer.js"
 import Tasks from "./components/Tasks.js"
 import AddTask from "./components/AddTask.js"
+import About from "./components/About.js"
+import { BrowserRouter } from "react-router-dom"
 
 function App() {
   // fetch tasks from server
@@ -73,20 +76,32 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Header
-        title="Task Tracker"
-        addFormVis={addFormVis}
-        setAddFormVis={setAddFormVis}
-      />
-      {addFormVis && <AddTask saveTask={saveTask} />}
-      <Tasks
-        tasks={tasks}
-        handleDelete={handleDelete}
-        toggleReminder={toggleReminder}
-      />
-      <Footer />
-    </div>
+    <Router>
+      <div className="container">
+        <Header
+          title="Task Tracker"
+          addFormVis={addFormVis}
+          setAddFormVis={setAddFormVis}
+        />
+
+        <Route
+          path="/"
+          exact
+          render={(props) => (
+            <>
+              {addFormVis && <AddTask saveTask={saveTask} />}
+              <Tasks
+                tasks={tasks}
+                handleDelete={handleDelete}
+                toggleReminder={toggleReminder}
+              />
+            </>
+          )}
+        />
+        <Route path="/about" component={About} />
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

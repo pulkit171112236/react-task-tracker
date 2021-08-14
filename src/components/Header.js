@@ -1,18 +1,23 @@
 import PropTypes from "prop-types"
 import { MdExpandLess } from "react-icons/md"
 import { MdExpandMore } from "react-icons/md"
+import { useLocation } from "react-router-dom"
 
 const Header = ({ title, addFormVis, setAddFormVis }) => {
+  const location = useLocation()
+  console.log("----------location--------------", location)
   return (
     <div>
       <header className="header">
         <h1>{title}</h1>
-        <Button
-          text="Add"
-          color="green"
-          addFormVis={addFormVis}
-          setAddFormVis={setAddFormVis}
-        />
+        {location.pathname === "/" && (
+          <Button
+            text="Add"
+            color="green"
+            addFormVis={addFormVis}
+            setAddFormVis={setAddFormVis}
+          />
+        )}
       </header>
     </div>
   )
